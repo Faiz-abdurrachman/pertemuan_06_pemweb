@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Daftar Member Kantin{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h2>Daftar Member Kantin</h2>
+            <p>Dapatkan diskon 15% setiap pembelian menu favorit Anda!</p>
+        </div>
+
+        <!-- FORM POST KE ROUTE /register -->
+        <form action="/register" method="POST">
+            <!-- INPUT NAMA LENGKAP -->
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" class="form-control" 
+                       value="{{ request.form.get('nama', '') }}" 
+                       placeholder="Contoh: Budi Santoso">
+                <small class="form-help">Minimal 3 karakter</small>
+            </div>
+
+            <!-- INPUT EMAIL -->
+            <div class="form-group">
+                <label for="email">Alamat Email Kampus</label>
+                <input type="text" id="email" name="email" class="form-control" 
+                       value="{{ request.form.get('email', '') }}" 
+                       placeholder="Contoh: budi@kampus.ac.id">
+                <small class="form-help">Harus menyertakan @ dan domain (misal .com atau .ac.id)</small>
+            </div>
+
+            <!-- INPUT PASSWORD -->
+            <div class="form-group">
+                <label for="password">Kata Sandi (Password)</label>
+                <input type="password" id="password" name="password" class="form-control" 
+                       placeholder="Minimal 6 karakter">
+                <small class="form-help">Minimal 6 karakter demi keamanan akun</small>
+            </div>
+
+            <!-- INPUT KONFIRMASI PASSWORD -->
+            <div class="form-group">
+                <label for="confirm">Konfirmasi Kata Sandi</label>
+                <input type="password" id="confirm" name="confirm" class="form-control" 
+                       placeholder="Ketik ulang kata sandi di atas">
+                <small class="form-help">Harus persis sama dengan kata sandi di atas</small>
+            </div>
+
+            <!-- TOMBOL DAFTAR -->
+            <button type="submit" class="btn btn-primary btn-block">Daftar Member Sekarang</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Sudah punya akun member? <a href="/">Kembali ke Beranda</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
